@@ -1,5 +1,5 @@
-use serde_json::json;
 use vercel_runtime::{run, Body, Error, Request, Response};
+use serde_json::json;
 
 #[tokio::main]
 async fn main() -> Result<(), Error> {
@@ -7,9 +7,18 @@ async fn main() -> Result<(), Error> {
 }
 
 async fn handler(_req: Request) -> Result<Response<Body>, Error> {
-  Response::json(&json!({
-      "rust": "fanqie",
-      "message": "参数错误",
-      "data": { "content": "没有数据" }
-  }))
+    let response = Response::builder()
+        .status(200)
+        .header("Content-Type", "application/json")
+        .body(
+            json!({
+                "rust": "fanqie",
+                "message": "参数错误",
+                "data": { "content": "没有数据" }
+            })
+            .to_string()
+            .into(),
+        )?;
+    
+    Ok(response)
 }
