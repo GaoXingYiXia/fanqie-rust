@@ -10,5 +10,9 @@ vercel_runtime = "1"   # 核心运行时库
 
 # 将每个 .rs 文件声明为一个独立的二进制程序
 [[bin]]
-name = "hello"
-path = "api/hello.rs"
+name = "content"
+path = "api/content.rs"
+
+[[bin]]
+name = "/"
+path = "api/index.rs"
