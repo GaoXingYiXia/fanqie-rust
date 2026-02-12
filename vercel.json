@@ -1,7 +1,11 @@
 {
+  "framework": "vercel",
+  "buildCommand": "cargo build --release",
+  "installCommand": "cargo fetch",
+  "outputDirectory": "target/release",
   "functions": {
     "api/**/*.rs": {
-      "runtime": "vercel-rust@4.0.9"
+      "runtime": "@vercel/rust@2"
     }
   }
 }

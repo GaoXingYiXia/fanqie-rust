@@ -12,8 +12,7 @@ pub async fn handler(_req: Request) -> Result<Response<Body>, Error> {
         .header("Content-Type", "application/json")
         .body(
             json!({
-                "message": "Hello from Rust!",
-                "timestamp": chrono::Utc::now().to_rfc3339()
+                "message": "Hello from Rust!"
             })
             .to_string()
             .into(),
