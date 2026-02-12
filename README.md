@@ -1,0 +1,2 @@
+# fanqie-rust
+test
