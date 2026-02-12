@@ -11,12 +11,13 @@ async fn handler(_req: Request) -> Result<Response<Body>, Error> {
         .status(200)
         .header("Content-Type", "application/json")
         .body(
-            json!({
-                "message": "Hello from Content!",
-                "status": "success"
-            })
-            .to_string()
-            .into(),
+            Body::Text(  // 明确指定为文本类型
+                json!({
+                    "message": "Hello from Content!",
+                    "status": "success"
+                })
+                .to_string()
+            )
         )?;
     
     Ok(response)

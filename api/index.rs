@@ -11,13 +11,14 @@ async fn handler(_req: Request) -> Result<Response<Body>, Error> {
         .status(200)
         .header("Content-Type", "application/json")
         .body(
-            json!({
-                "rust": "fanqie",
-                "message": "参数错误",
-                "data": { "content": "没有数据" }
-            })
-            .to_string()
-            .into(),
+            Body::Text(  // 明确指定为文本类型
+                json!({
+                    "rust": "fanqie",
+                    "message": "参数错误",
+                    "data": { "content": "没有数据" }
+                })
+                .to_string()
+            )
         )?;
     
     Ok(response)
