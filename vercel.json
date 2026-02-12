@@ -4,7 +4,7 @@
   "outputDirectory": "target/x86_64-unknown-linux-gnu/release",
   "functions": {
     "api/**/*.rs": {
-      "runtime": "@vercel/rust@2",
+      "runtime": "@vercel/rust",
       "maxDuration": 60
     }
   }
