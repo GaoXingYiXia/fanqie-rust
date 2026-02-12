@@ -7,18 +7,16 @@ async fn main() -> Result<(), Error> {
 }
 
 async fn handler(_req: Request) -> Result<Response<Body>, Error> {
+    let json_string = json!({
+        "message": "Hello from Content!",
+        "status": "success"
+    }).to_string();
+    
     let response = Response::builder()
         .status(200)
         .header("Content-Type", "application/json")
-        .body(
-            Body::Text(  // 明确指定为文本类型
-                json!({
-                    "message": "Hello from Content!",
-                    "status": "success"
-                })
-                .to_string()
-            )
-        )?;
+        .header("Cache-Control", "no-cache")  // 添加缓存控制
+        .body(Body::from(json_string))?;
     
     Ok(response)
 }
