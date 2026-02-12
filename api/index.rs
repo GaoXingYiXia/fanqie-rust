@@ -1,4 +1,4 @@
-use vercel_runtime::{run, Error, Request, Response};
+use vercel_runtime::{run, Error, Request, Response, StatusCode};
 use serde_json::json;
 
 #[tokio::main]
@@ -7,11 +7,16 @@ async fn main() -> Result<(), Error> {
 }
 
 pub async fn handler(_req: Request) -> Result<Response<String>, Error> {
-    Response::json(&json!({
-        "rust": "fanqie",
-        "message": "参数错误",
-        "data": {
-            "content": "没有数据"
-        }
-    }))
+    Ok(Response::builder()
+        .status(StatusCode::OK)
+        .header("Content-Type", "application/json")
+        .body(
+            json!({
+                "rust": "fanqie",
+                "message": "参数错误",
+                "data": {
+                    "content": "没有数据"
+                }
+            }).to_string()
+        )?)
 }
