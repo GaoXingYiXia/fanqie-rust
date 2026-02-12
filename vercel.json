@@ -1,11 +1,11 @@
 {
-  "framework": "vercel",
-  "buildCommand": "cargo build --release",
+  "buildCommand": "cargo build --release --target x86_64-unknown-linux-gnu",
   "installCommand": "cargo fetch",
-  "outputDirectory": "target/release",
+  "outputDirectory": "target/x86_64-unknown-linux-gnu/release",
   "functions": {
     "api/**/*.rs": {
-      "runtime": "@vercel/rust@2"
+      "runtime": "@vercel/rust@2",
+      "maxDuration": 60
     }
   }
 }
